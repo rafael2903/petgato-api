@@ -1,24 +1,27 @@
-# README
+# Petgato4-Front
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* feat: implementa a navbar
+* fix: corrige o bug navbar muito pequena
+* tarefa: remove o link hardcoded da api
+* estilo: aumenta o tamanho da navbar
+* refactor: altera o uso de contexto no app
 
-Things you may want to cover:
+## Nomeando branchs
 
-* Ruby version
+### Ideia mais geral da tarefa
 
-* System dependencies
+{tipo}/{resumo}
+feat/user-login
+fix/user-login-request
 
-* Configuration
+## commits -  ideia mais específica da tarefa
 
-* Database creation
+{tipo}: (Se aplicado esse commit...) {resumo}
+sigam as boas práticas!
+feat: implementa components de input
+fix: corrige comunicação com back
+https://brn.wtf/commits
 
-* Database initialization
+# Mais informações sobre git
+https://brennop.github.io/wiki/#/git/guia
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
