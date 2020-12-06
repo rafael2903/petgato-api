@@ -1,4 +1,4 @@
-# Petgato4-Front
+# petgato grupo 3
 
 * feat: implementa a navbar
 * fix: corrige o bug navbar muito pequena
