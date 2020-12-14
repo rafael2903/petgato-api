@@ -1,5 +1,6 @@
 class UserMailer < ApplicationMailer
-    default from: 'rafaelrodigues29032@gmail.com'
+    default from: 'petgato.cjr@gmail.com'
+      #default from: 'tucazorron@gmail.com'
 
   def reset_password_email
     
