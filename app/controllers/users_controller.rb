@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     before_action :set_user, only: [:show, :update, :destroy]
-    before_action :authorize_request, except: :create
+    before_action :authorize_request, except: [:create, :password_reset]
     
     def index
         @users = User.all
@@ -29,6 +29,22 @@ class UsersController < ApplicationController
         end
     end
 
+    def password_reset
+        begin
+            @user = User.find_by_email!(params[:email])
+        rescue ActiveRecord::RecordNotFound
+            render json: { errors: 'User not found' }, status: :not_found
+        end
+        new_password = rand(36**8).to_s(36)
+        if @user.update(password: new_password)
+            UserMailer.with(user: @user, new_password: new_password).reset_password_email.deliver_now
+            render :ok
+        else
+            render json: {errors: @user.errors.full_messages},
+                        status: :unprocessable_entity
+        end
+    end
+
     def destroy
         @user.destroy
     end
@@ -36,7 +52,7 @@ class UsersController < ApplicationController
     private
 
     def set_user
-        @user = User.find_by_username!(params[:_username])
+        @user = User.find(params[:id])
         rescue ActiveRecord::RecordNotFound
             render json: { errors: 'User not found' }, status: :not_found
     end
