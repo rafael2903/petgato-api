@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+    before_save :set_admin
     has_secure_password
 
     # mount_uploader :avatar, AvatarUploader
@@ -9,4 +10,10 @@ class User < ApplicationRecord
     validates :password,
               length: { minimum: 6 },
               if: -> { new_record? || !password.nil? }
+
+    def set_admin
+        self.is_admin = true
+    end
+
+
   end
