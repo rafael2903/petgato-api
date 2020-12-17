@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-    before_save :set_admin
+    # before_save :set_admin
     has_secure_password
     has_many :comments
     has_many :replies
@@ -11,10 +11,5 @@ class User < ApplicationRecord
     validates :password,
               length: { minimum: 8 },
               if: -> { new_record? || !password.nil? }
-
-    def set_admin
-        self.is_admin = true
-    end
-
 
   end

@@ -108,6 +108,4 @@ ActiveRecord::Schema.define(version: 2020_12_17_190915) do
   add_foreign_key "post_has_tags", "posts"
   add_foreign_key "post_has_tags", "tags"
 
-  add_foreign_key "tags", "posts"
-  add_foreign_key "post", "tags"
 end
