@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_190915) do
+ActiveRecord::Schema.define(version: 2020_12_17_222847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_190915) do
     t.integer "views"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "content"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -107,5 +108,4 @@ ActiveRecord::Schema.define(version: 2020_12_17_190915) do
   add_foreign_key "comment_has_replies", "replies"
   add_foreign_key "post_has_tags", "posts"
   add_foreign_key "post_has_tags", "tags"
-
 end
