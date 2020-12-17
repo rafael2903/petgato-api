@@ -23,10 +23,22 @@ class UsersController < ApplicationController
     end
 
     def update
-        unless @user.update(user_params)
+
+        # puts user_params
+        # params[:is_admin] == "true"
+        #     params[:is_admin] = true
+        # else
+            # params[:is_admin] = false
+        # end
+
+        if @user.update(user_params)
+            render json: @user, status: :ok
+            
+        else 
             render json: {errors: @user.errors.full_messages},
                         status: :unprocessable_entity
         end
+
     end
 
     def password_reset
@@ -58,6 +70,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:name, :email, :password, :password_confirmation, :is_admin)
+        params.require(:user).permit(:name, :id, :email, :password, :password_confirmation, :is_admin)
     end
 end
