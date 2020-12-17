@@ -1,0 +1,2 @@
+class CommentHasRepliesController < ApplicationController
+end
