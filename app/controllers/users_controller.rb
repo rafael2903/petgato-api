@@ -23,14 +23,6 @@ class UsersController < ApplicationController
     end
 
     def update
-
-        # puts user_params
-        # params[:is_admin] == "true"
-        #     params[:is_admin] = true
-        # else
-            # params[:is_admin] = false
-        # end
-
         if @user.update(user_params)
             render json: @user, status: :ok
             
