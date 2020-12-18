@@ -1,9 +1,9 @@
 class PostHasTagsController < ApplicationController
 
-    before_action :set_post, only: [:show, :destroy, :update]
+    before_action :set_post_has_tag, only: [:show, :destroy, :update]
 
     def index
-        @post_has_tags = Post_has_tags.all
+        @post_has_tags = PostHasTag.all
         render json: @post_has_tags
     end
 
@@ -12,7 +12,7 @@ class PostHasTagsController < ApplicationController
     end
 
     def create
-        @post_has_tags = Post_has_tags.new(post_has_tags_params)
+        @post_has_tags = PostHasTag.new(post_has_tags_params)
 
         if @post_has_tags.save
             render json: @post_has_tags, status: :created
@@ -31,11 +31,11 @@ class PostHasTagsController < ApplicationController
                         status: :unprocessable_entity
         end
     end
-
+    
     private
 
-    def set_post_has_tags
-        @post_has_tags = Post_has_tags.find(params[:id])
+    def set_post_has_tag
+        @post_has_tags = PostHasTag.find(params[:post_id])
     end
         
     def post_has_tags_params
