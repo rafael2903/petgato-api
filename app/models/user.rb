@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-
-    # before_save :set_admin
     has_secure_password
     has_many :comments
     has_many :replies
