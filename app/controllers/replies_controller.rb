@@ -1,5 +1,4 @@
 class RepliesController < ApplicationController
-    class replysController < ApplicationController
 
         before_action :set_reply, only: [:show, :destroy, :update]
     

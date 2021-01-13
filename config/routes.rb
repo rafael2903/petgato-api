@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   post '/recovery', to: 'users#password_reset'
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
-  
 end

@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     def update
         if @user.update(user_params)
             render json: @user, status: :ok
-            
         else 
             render json: {errors: @user.errors.full_messages},
                         status: :unprocessable_entity
@@ -41,8 +40,8 @@ class UsersController < ApplicationController
         end
         new_password = rand(36**8).to_s(36)
         if @user.update(password: new_password)
-            UserMailer.with(user: @user, new_password: new_password).reset_password_email.deliver_now
-            render :ok
+            UserMailer.with(user: @user, new_password: new_password).password_reset.deliver_now
+            render  status: :ok
         else
             render json: {errors: @user.errors.full_messages},
                         status: :unprocessable_entity
@@ -62,6 +61,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :id, :email, :password, :password_confirmation, :is_admin)
+        params.permit(:name, :id, :email, :password, :password_confirmation, :is_admin)
     end
 end
