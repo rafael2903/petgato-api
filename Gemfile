@@ -42,3 +42,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use Json Web Token (JWT) for token based authentication
 gem 'jwt'
+
+gem 'active_model_serializers'

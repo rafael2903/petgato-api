@@ -1,20 +1,26 @@
 class PostsController < ApplicationController
+    include ActionController::Serialization
 
     before_action :set_post, only: [:show, :destroy, :update]
 
     def index
-        @posts = Post.all
+        #@posts = Post.all
         # render json: @posts
     end
 
     def show
-        # render json: @post
+        #render json: @post.as_json({ src: url_for(@post.banner_image) })
     end
 
     def create
         @post = Post.new(post_params)
 
         if @post.save
+            if @post.banner_image.attached?
+                @url_banner_image = url_for(@post.banner_image)
+                # Rails.application.routes.url_helpers.url_for(@post.banner_image)
+                puts(@url_banner_image)
+            end
             render json: @post, status: :created
         else
             render json: @post.errors
@@ -39,7 +45,7 @@ class PostsController < ApplicationController
     end
         
     def post_params
-        params.permit(:name, :content, :banner_image, :views)
+        params.permit(:name, :content, :banner_image)
     end
     
 end
