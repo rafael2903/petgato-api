@@ -27,3 +27,5 @@
 /config/master.key
 
 settings.json
+# Ignore application configuration
+/config/application.yml
